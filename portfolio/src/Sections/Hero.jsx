@@ -1,9 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import facilitateImages from "../data/facilitate";
 
 const Hero = () => {
   const typedRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
@@ -17,7 +19,6 @@ const Hero = () => {
         "Cloud Experience | Azure, AWS-S3, GCP, MinIO",
         "DSA & System Design Learner | Problem Solver",
       ],
-
       typeSpeed: 40,
       backSpeed: 20,
       backDelay: 1000,
@@ -27,12 +28,39 @@ const Hero = () => {
     return () => typed.destroy();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % facilitateImages.length);
+    }, 2000); // switch every 2 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   const popupVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const imageVariants = {
+    enter: {
+      x: "100%",
+      opacity: 0,
+      zIndex: 0,
+    },
+    center: {
+      x: 0,
+      opacity: 1,
+      zIndex: 1,
+      transition: { duration: 0.6 },
+    },
+    exit: {
+      x: "-100%",
+      opacity: 0,
+      zIndex: 0,
+      transition: { duration: 0.6 },
     },
   };
 
@@ -71,13 +99,25 @@ const Hero = () => {
           <h1 className="md:text-4xl text-xl font-bold outfit text-gray-900 dark:text-white mb-4">
             Lakhan Shrivastav
           </h1>
-          <p className="md:text-xl text-md pb-2 md:pb-0 inter text-gray-700 dark:text-gray-300">
+          <p className="md:text-xl text-md pb-4 inter text-gray-700 dark:text-gray-300">
             <span className="typed" ref={typedRef} />
-            <span
-              className="typed-cursor typed-cursor--blink"
-              aria-hidden="true"
-            ></span>
           </p>
+
+          {/* Rotating Image Animation */}
+          <div className="relative w-full h-40 mt-4 overflow-hidden rounded-lg mb-4">
+            <AnimatePresence>
+              <motion.img
+                key={facilitateImages[currentIndex]}
+                src={facilitateImages[currentIndex]}
+                alt="Facilitate Visual"
+                className="absolute w-full h-full object-contain object-center rounded-2xl px-4 md:px-0"
+                variants={imageVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+              />
+            </AnimatePresence>
+          </div>
         </motion.div>
       </motion.div>
     </section>
