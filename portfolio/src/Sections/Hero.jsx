@@ -56,7 +56,7 @@ const Hero = () => {
           <img
             src="/profile/profilebg.png"
             alt="Lakhan Shrivastav"
-            className="w-full lg:h-[600px] md:h-[500px] h-[300px] object-contain object-center rounded-xl drop-shadow-md drop-shadow-emerald-700 dark:drop-shadow-emerald-300"
+            className="w-full lg:h-[600px] md:h-[500px] h-[300px] object-contain object-center rounded-xl drop-shadow-md dark:drop-shadow-emerald-300"
           />
         </motion.div>
 

@@ -2,7 +2,7 @@ const skills = {
   "Programming Languages": [
     { name: "Python", logo: "/logos/pl/python.png" },
     { name: "C++", logo: "/logos/pl/c++.png" },
-    // { name: "Java", logo: "/logos/pl/java.png" },
+    { name: "Java", logo: "/logos/pl/java.png" },
     { name: "C", logo: "/logos/pl/c.png" },
   ],
   "Frameworks": [
