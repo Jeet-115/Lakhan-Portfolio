@@ -110,7 +110,7 @@ const Hero = () => {
                 key={facilitateImages[currentIndex]}
                 src={facilitateImages[currentIndex]}
                 alt="Facilitate Visual"
-                className="absolute w-full h-full object-contain object-center rounded-2xl px-4 md:px-0"
+                className="absolute w-full h-full object-contain object-left rounded-2xl px-4 md:px-0"
                 variants={imageVariants}
                 initial="enter"
                 animate="center"
