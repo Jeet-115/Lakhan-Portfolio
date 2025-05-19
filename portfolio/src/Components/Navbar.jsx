@@ -76,10 +76,10 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex justify-between items-center">
         {/* Left: Title */}
-        <div className="text-lg font-bold">Full Stack Developer | Python & GenAI Specialist</div>
+        <div className="lg:text-lg md:text-[16px] text-sm font-bold">Full Stack Developer | Python & GenAI Specialist</div>
 
         {/* Right: Links for Laptop Screens */}
-        <ul className="hidden md:flex space-x-8 relative">
+        <ul className="hidden md:flex space-x-8 relative lg:text-[16px] md:text-sm text-[12px]">
           {navItems.map((item) => (
             <li key={item.name} className="relative">
               <Link
